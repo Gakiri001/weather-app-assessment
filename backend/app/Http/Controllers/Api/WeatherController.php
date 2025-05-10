@@ -10,44 +10,47 @@ class WeatherController extends Controller
 {
     public function getWeather(Request $request)
     {
-        $lat = $request->query('lat');
-        $lon = $request->query('lon');
+        // $lat = $request->query('lat');
+        // $lon = $request->query('lon');
+        $city = $request->input('city');
 
-        if (!$lat || !$lon) {
-            return response()->json(['error' => 'Latitude and longitude are required'], 400);
+        // if (!$lat || !$lon) {
+        //     return response()->json(['error' => 'Latitude and longitude are required'], 400);
+        // }
+        if (!$city) {
+            return response()->json(['error' => 'City is required'], 400);
         }
 
         $apiKey = config('services.openweather.key');
-        $url = "https://api.openweathermap.org/data/2.5/weather";
+        $url = "https://api.openweathermap.org/data/2.5/weather?q={$city}&appid={$apiKey}&units=metric";
 
-        $response = Http::get($url, [
-            'lat' => $lat,
-            'lon' => $lon,
-            'appid' => $apiKey,
-            'units' => 'metric',
-        ]);
+        $response = Http::get($url);
+
+        if ($response->failed()) {
+            return response()->json(['error' => 'Unable to fetch weather data'], 500);
+        }
+
 
         return $response->json();
     }
 
     public function getForecast(Request $request)
     {
-        $lat = $request->query('lat');
-        $lon = $request->query('lon');
+        // $lat = $request->query('lat');
+        // $lon = $request->query('lon');
+          $city = $request->input('city');
 
-        if (!$lat || !$lon) {
-            return response()->json(['error' => 'Latitude and longitude are required'], 400);
+        // if (!$lat || !$lon) {
+        //     return response()->json(['error' => 'Latitude and longitude are required'], 400);
+        // }
+        if (!$city) {
+            return response()->json(['error' => 'City is required'], 400);
         }
 
         $apiKey = config('services.openweather.key');
-        $url = "https://api.openweathermap.org/data/2.5/forecast";
+        $url = "https://api.openweathermap.org/data/2.5/forecast?q={$city}&appid={$apiKey}&units=metric";
 
-        $response = Http::get($url, [
-            'lat' => $lat,
-            'lon' => $lon,
-            'appid' => $apiKey,
-            'units' => 'metric',
-        ]);
+        $response = Http::get($url);
 
         return $response->json();
     }
