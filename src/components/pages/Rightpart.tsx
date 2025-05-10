@@ -4,6 +4,7 @@ import { Button } from '../ui/button'
 import { FaCloudRain } from "react-icons/fa6";
 import { IoSunnyOutline } from "react-icons/io5";
 import { CiCloudOn } from "react-icons/ci";
+import { IoIosArrowDropright } from "react-icons/io";
 
 type Props = {}
 
@@ -37,9 +38,19 @@ export default function Rightpart({}: Props) {
                 <p className='text-1xl font-bold'>15-17-15 ºC</p>
             </div>
         </div>
-        <div>
-            <div></div>
-            <div></div>
+        <div className='flex items-center justify-between p-4 gap-2'>
+            <div className='flex items-center flex-col p-4 justify-between border-1 border-gray-400 rounded-[10px] w-[90%] h-[30vh]'>
+                <p className='text-1xl font-semibold'>Wind Status</p>
+                <p className='text-3xl font-bold'>3 Km/hr</p>
+                <IoIosArrowDropright className='text-[60px] text-yellow-200'/>
+            </div>
+            <div className='flex items-center flex-col p-4 justify-between border-1 border-gray-400 rounded-[10px] w-[90%] h-[30vh]'>
+                <p className='text-1xl font-semibold'>Humidity Infomation</p>
+                <p className='text-3xl font-bold'>80%</p>
+                <div className='h-[20px] w-[100%] bg-gray-200 rounded-[10px]'>
+                    <div className='h-[20px] w-[80%] bg-blue-200 rounded-[10px]'></div>
+                </div>
+            </div>
         </div>
      </div>
   )
