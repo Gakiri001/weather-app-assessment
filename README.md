@@ -52,3 +52,17 @@ This project is a **decoupled weather app** built using **Next.js (with TypeScri
 ```bash
 git clone https://github.com/Gakiri001/weather-app-assessment.git
 cd weather-app-assessment
+```
+
+## 📸 Screenshots
+### Weather Application
+![Weather App webpage screenshot](./frontend/public/WeatherWebApp.png)
+
+
+### Weather API Testing
+
+![Weather API testing Screenshot](./frontend/public/weatherTestNairobi.png)
+
+### Forecast API Testing
+![Forecast API Testing](./frontend/public/forecastTest.png)
+
